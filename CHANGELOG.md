@@ -6,3 +6,7 @@
 
 * Example fixes
 * README updated
+
+## 0.0.5
+
+* README updated

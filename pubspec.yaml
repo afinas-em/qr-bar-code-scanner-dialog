@@ -1,6 +1,6 @@
 name: qr_bar_code_scanner_dialog
 description: Plugin to show a simple scanner dialog and capture Bar/QR code easily. Works with Android iOS and Web. It uses html5-qrcode scanner for web and qr_code_scanner for Android and iOS
-version: 0.0.3
+version: 0.0.5
 homepage: https://github.com/Afinas-nl/qr-bar-code-scanner-dialog
 
 environment:

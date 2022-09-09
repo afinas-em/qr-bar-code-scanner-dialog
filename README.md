@@ -1,14 +1,14 @@
-# QR Bar Code Scanner Dialog
-Plugin to show a simple scanner dialog and capture Bar/QR code easily. Works with Android, iOS and Web. It uses [`html5-qrcode`](https://github.com/mebjas/html5-qrcode) js library for web and [`qr_code_scanner`](https://pub.dev/packages/qr_code_scanner) for Android and iOS
+
+# QR/Bar Code Scanner Dialog
+Plugin to show a simple scanner dialog and capture Bar/QR code easily. Works with Android, iOS, and Web. It uses [`html5-qrcode`](https://github.com/mebjas/html5-qrcode) js library for web and [`qr_code_scanner`](https://pub.dev/packages/qr_code_scanner) for Android and iOS
 
 #### Note:
-At present, this is the only **flutter web** plugin that support **barcode** scanning
+At present, this is the only **flutter web** plugin that supports **barcode** scanning
 
 
 ## Get Scanned QR/Bar Code
 
-When a QR code is recognized, the text identified will be set in 'result' of type `Barcode`, which contains the output text as property 'code' of type `String` and scanned code type as property 'format' which is an enum `BarcodeFormat`, defined in the library.
-
+When a QR code is recognized, the text identified will be passed to function callback `onCode`.
 ```dart
 
 class _MyAppState extends State<MyApp> {
@@ -22,33 +22,32 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Plugin example app'),
-		),
-		body: Builder(builder: (context) {
+        ),
+        body: Builder(builder: (context) {
           return Material(
             child: Center(
               child: ElevatedButton(
                   onPressed: () {
                     _qrBarCodeScannerDialogPlugin.getScannedQrBarCode(
                         context: context,
-						onCode: (code) {
+                        onCode: (code) {
                           setState(() {
                             this.code = code;
-						  });
-					 });
-				  },
-				  child: Text(code ?? "Click me")),
-			  ),
-		    );
-		  }),
-		 ),
-	  );
-	}
+                          });
+                        });
+                  },
+                  child: Text(code ?? "Click me")),
+            ),
+          );
+        }),
+      ),
+    );
+  }
 }
-
 ```
 
 ## Android Integration
-In order to use this plugin, please update the Gradle, Kotlin and Kotlin Gradle Plugin:
+In order to use this plugin, please update the Gradle, Kotlin, and Kotlin Gradle Plugin:
 
 In ```android/build.gradle``` change ```ext.kotlin_version = '1.3.50'``` to ```ext.kotlin_version = '1.5.10'```
 
@@ -86,4 +85,4 @@ In order to use this plugin, add the following to your Info.plist file:
 
 ## Web Integration
 
-No need to update anything, plugin append the html contents to the DOM.
+No need to update anything, the plugin appends the HTML contents to the DOM.
