@@ -2,7 +2,8 @@
 // of your plugin as a separate package, instead of inlining it in the same
 // package as the core of your plugin.
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html show window, Element, ScriptElement, StyleElement, querySelector, Text;
+import 'dart:html' as html
+    show window, Element, ScriptElement, StyleElement, querySelector, Text;
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -23,7 +24,6 @@ class QrBarCodeScannerDialogWeb extends QrBarCodeScannerDialogPlatform {
     QrBarCodeScannerDialogPlatform.instance = QrBarCodeScannerDialogWeb();
   }
 
-
   /// Initializes a DOM container where we can host input elements.
   html.Element _ensureInitialized(String id) {
     var target = html.querySelector('#$id');
@@ -32,9 +32,11 @@ class QrBarCodeScannerDialogWeb extends QrBarCodeScannerDialogPlatform {
         ..id = id
         ..className = "modal";
 
-      final html.Element content = html.Element.div()..className = "modal-content";
+      final html.Element content = html.Element.div()
+        ..className = "modal-content";
 
-      final html.Element div = html.Element.div()..setAttribute("style", "container");
+      final html.Element div = html.Element.div()
+        ..setAttribute("style", "container");
 
       final html.Element reader = html.Element.div()
         ..id = "qr-reader"
@@ -48,9 +50,9 @@ class QrBarCodeScannerDialogWeb extends QrBarCodeScannerDialogPlatform {
 
       body.children.add(targetElement);
 
-      final script = html.ScriptElement()..src = "https://unpkg.com/html5-qrcode";
+      final script = html.ScriptElement()
+        ..src = "https://unpkg.com/html5-qrcode";
       body.children.add(script);
-
 
       final head = html.querySelector('head')!;
       final style = html.StyleElement();
@@ -100,7 +102,6 @@ class QrBarCodeScannerDialogWeb extends QrBarCodeScannerDialogPlatform {
       
       """);
 
-
       final codeScript = html.ScriptElement();
       final scriptText = html.Text(r"""
         
@@ -145,7 +146,6 @@ class QrBarCodeScannerDialogWeb extends QrBarCodeScannerDialogPlatform {
     return target;
   }
 
-
   /// Returns a [String] containing the version of the platform.
   @override
   Future<String?> getPlatformVersion() async {
@@ -154,8 +154,8 @@ class QrBarCodeScannerDialogWeb extends QrBarCodeScannerDialogPlatform {
   }
 
   @override
-  void scanBarOrQrCode({BuildContext? context, required Function(String?) onScanSuccess}) {
+  void scanBarOrQrCode(
+      {BuildContext? context, required Function(String?) onScanSuccess}) {
     js.context.callMethod("scanCode", [onScanSuccess]);
   }
-
 }

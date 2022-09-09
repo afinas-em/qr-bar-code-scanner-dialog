@@ -9,7 +9,8 @@ abstract class QrBarCodeScannerDialogPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static QrBarCodeScannerDialogPlatform _instance = MethodChannelQrBarCodeScannerDialog();
+  static QrBarCodeScannerDialogPlatform _instance =
+      MethodChannelQrBarCodeScannerDialog();
 
   /// The default instance of [QrBarCodeScannerDialogPlatform] to use.
   ///
@@ -28,7 +29,8 @@ abstract class QrBarCodeScannerDialogPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  void scanBarOrQrCode({BuildContext? context, required Function(String?) onScanSuccess}) {
+  void scanBarOrQrCode(
+      {BuildContext? context, required Function(String?) onScanSuccess}) {
     throw UnimplementedError('scanBarOrQrCodeWeb() has not been implemented.');
   }
 }

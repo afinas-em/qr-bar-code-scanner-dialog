@@ -1,6 +1,6 @@
 name: qr_bar_code_scanner_dialog
-description: Plugin to scan Bar/QR code easly with Flutter.
-version: 0.0.2
+description: Plugin to show a simple scanner dialog and capture Bar/QR code easily. Works with Android iOS and Web. It uses html5-qrcode scanner for web and qr_code_scanner for Android and iOS
+version: 0.0.3
 homepage: https://github.com/Afinas-nl/qr-bar-code-scanner-dialog
 
 environment:
@@ -12,8 +12,8 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
-  qr_code_scanner: ^0.6.1
+  plugin_platform_interface: ^2.1.2
+  qr_code_scanner: ^1.0.1
 
 dev_dependencies:
   flutter_test:

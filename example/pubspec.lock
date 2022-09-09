@@ -127,14 +127,14 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.3"
   qr_code_scanner:
     dependency: transitive
     description:
       name: qr_code_scanner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.1"
+    version: "1.0.1"
   sky_engine:
     dependency: transitive
     description: flutter

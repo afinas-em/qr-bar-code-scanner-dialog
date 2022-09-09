@@ -8,37 +8,43 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockQrBarCodeScannerDialogPlatform
     with MockPlatformInterfaceMixin
     implements QrBarCodeScannerDialogPlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
 
   @override
-  void scanBarOrQrCode({BuildContext? context, required Function(String? p1) onScanSuccess}) {
+  void scanBarOrQrCode(
+      {BuildContext? context, required Function(String? p1) onScanSuccess}) {
     onScanSuccess("CODE");
   }
 }
 
 void main() {
-  final QrBarCodeScannerDialogPlatform initialPlatform = QrBarCodeScannerDialogPlatform.instance;
+  final QrBarCodeScannerDialogPlatform initialPlatform =
+      QrBarCodeScannerDialogPlatform.instance;
 
   test('$MethodChannelQrBarCodeScannerDialog is the default instance', () {
-    expect(initialPlatform, isInstanceOf<MethodChannelQrBarCodeScannerDialog>());
+    expect(
+        initialPlatform, isInstanceOf<MethodChannelQrBarCodeScannerDialog>());
   });
 
   test('getPlatformVersion', () async {
-    QrBarCodeScannerDialog qrBarCodeScannerDialogPlugin = QrBarCodeScannerDialog();
-    MockQrBarCodeScannerDialogPlatform fakePlatform = MockQrBarCodeScannerDialogPlatform();
+    QrBarCodeScannerDialog qrBarCodeScannerDialogPlugin =
+        QrBarCodeScannerDialog();
+    MockQrBarCodeScannerDialogPlatform fakePlatform =
+        MockQrBarCodeScannerDialogPlatform();
     QrBarCodeScannerDialogPlatform.instance = fakePlatform;
 
     expect(await qrBarCodeScannerDialogPlugin.getPlatformVersion(), '42');
   });
 
   test('scanBarOrQrCodeWeb', () async {
-    QrBarCodeScannerDialog qrBarCodeScannerDialogPlugin = QrBarCodeScannerDialog();
-    MockQrBarCodeScannerDialogPlatform fakePlatform = MockQrBarCodeScannerDialogPlatform();
+    QrBarCodeScannerDialog qrBarCodeScannerDialogPlugin =
+        QrBarCodeScannerDialog();
+    MockQrBarCodeScannerDialogPlatform fakePlatform =
+        MockQrBarCodeScannerDialogPlatform();
     QrBarCodeScannerDialogPlatform.instance = fakePlatform;
 
-    qrBarCodeScannerDialogPlugin.getScannedQrBarCode(onCode: (code){
+    qrBarCodeScannerDialogPlugin.getScannedQrBarCode(onCode: (code) {
       expect(code, 'CODE');
     });
   });

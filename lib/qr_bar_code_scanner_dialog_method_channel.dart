@@ -8,20 +8,22 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'qr_bar_code_scanner_dialog_platform_interface.dart';
 
 /// An implementation of [QrBarCodeScannerDialogPlatform] that uses method channels.
-class MethodChannelQrBarCodeScannerDialog extends QrBarCodeScannerDialogPlatform {
+class MethodChannelQrBarCodeScannerDialog
+    extends QrBarCodeScannerDialogPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
   final methodChannel = const MethodChannel('qr_bar_code_scanner_dialog');
 
   @override
   Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
+    final version =
+        await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
 
   @override
-  void scanBarOrQrCode({BuildContext? context, required Function(String? code) onScanSuccess}) {
-
+  void scanBarOrQrCode(
+      {BuildContext? context, required Function(String? code) onScanSuccess}) {
     /// context is required to show alert in non-web platforms
     assert(context != null);
 
@@ -103,7 +105,8 @@ class _ScannerWidgetState extends State<ScannerWidget> {
   }
 
   Widget _buildQrView(BuildContext context) {
-    double smallestDimension = min(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height);
+    double smallestDimension = min(
+        MediaQuery.of(context).size.width, MediaQuery.of(context).size.height);
 
     smallestDimension = min(smallestDimension, 550);
 

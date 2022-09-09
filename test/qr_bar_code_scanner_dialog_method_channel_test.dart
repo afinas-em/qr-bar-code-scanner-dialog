@@ -3,7 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:qr_bar_code_scanner_dialog/qr_bar_code_scanner_dialog_method_channel.dart';
 
 void main() {
-  MethodChannelQrBarCodeScannerDialog platform = MethodChannelQrBarCodeScannerDialog();
+  MethodChannelQrBarCodeScannerDialog platform =
+      MethodChannelQrBarCodeScannerDialog();
   const MethodChannel channel = MethodChannel('qr_bar_code_scanner_dialog');
 
   TestWidgetsFlutterBinding.ensureInitialized();
